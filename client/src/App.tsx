@@ -5,7 +5,9 @@ function App() {
 
   return (
     <>
-      {<Button variant="primary" size="md" text="dfs" onClick={() => {}} />}
+      <Button variant="primary" size="md" text="dfs" onClick={() => {
+        console.log("hell------")
+      }} />
     </>
   )
 }
