@@ -1,3 +1,4 @@
+
 import { ReactElement } from "react";
 
 export interface ButtonProps {
@@ -10,20 +11,22 @@ export interface ButtonProps {
 }
 
 const variantStyle = {
-  "primary" : "bg-black text-white",
-  "secondary" : "bg-purple-300 text-purple-400",
+  "primary" : "bg-[#5046e4] text-white",
+  "secondary" : "bg-[#e0e7ff] text-[#473eba]",
 }
 
 const sizeStyle = {
   "sm" : "py-1 px-2 text-sm",
   "md" : "py-2 px-4 text-md",
-  "lg" : "py-3 px-6 text-lg",
+  "lg" : "py-4 px-6 text-lg",
 }
+
+const defaultStyles = "rounded-lg flex"
 
 
 export const Button = (props : ButtonProps) => {
   return (
-    <button className={`${variantStyle[props.variant]} ${sizeStyle[props.size]}`} onClick={props.onClick} >
+    <button className={`${variantStyle[props.variant]} ${sizeStyle[props.size]} ${defaultStyles}`} onClick={props.onClick} >
       {props.startIcon && <span className="mr-2">{props.startIcon}</span>}
       {props.text}
       {props.endIcon && <span className="ml-2">{props.endIcon}</span>}

@@ -1,13 +1,16 @@
-import './App.css'
-import { Button } from './components/ui/Button'
+// import { useState } from 'react'
+import { Button } from './components/Button'
+import { PlusIcon } from './icons/PlusIcon'
+
 
 function App() {
+  // const [count, setCount] = useState(0)
 
   return (
     <>
-      <Button variant="primary" size="md" text="dfs" onClick={() => {
-        console.log("hell------")
-      }} />
+      <Button startIcon={<PlusIcon size={"lg"}/>} variant={'primary'} size={'md'} text={"hello"} onClick={() => {console.log("hello is pressed")}}/>
+      <Button variant={'secondary'} size={'lg'} text={"hello"} onClick={() => {console.log("hello is pressed")}}/>
+      <Button variant={'primary'} size={'sm'} text={"hello"} onClick={() => {console.log("hello is pressed")}}/>
     </>
   )
 }
