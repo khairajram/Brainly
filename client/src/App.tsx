@@ -1,6 +1,7 @@
 // import { useState } from 'react'
 import { Button } from './components/Button'
 import { PlusIcon } from './icons/PlusIcon'
+import { ShareIcon } from './icons/ShareIcon'
 
 
 function App() {
@@ -8,9 +9,13 @@ function App() {
 
   return (
     <>
-      <Button startIcon={<PlusIcon size={"lg"}/>} variant={'primary'} size={'md'} text={"hello"} onClick={() => {console.log("hello is pressed")}}/>
-      <Button variant={'secondary'} size={'lg'} text={"hello"} onClick={() => {console.log("hello is pressed")}}/>
-      <Button variant={'primary'} size={'sm'} text={"hello"} onClick={() => {console.log("hello is pressed")}}/>
+      <Button startIcon={<PlusIcon size={"md"}/>} variant={'primary'} size={'md'} text={"create"} onClick={() => {console.log("hello is pressed")}}/>
+
+
+      <Button startIcon={<ShareIcon size={"lg"}/>} variant={'secondary'} size={'lg'} text={"share"} onClick={() => {console.log("hello is pressed")}}/>
+
+
+      <Button startIcon={<PlusIcon size={"sm"}/>} variant={'primary'} size={'sm'} text={"hello"} onClick={() => {console.log("hello is pressed")}}/>
     </>
   )
 }

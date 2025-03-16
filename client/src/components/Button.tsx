@@ -21,15 +21,18 @@ const sizeStyle = {
   "lg" : "py-4 px-6 text-lg",
 }
 
-const defaultStyles = "rounded-lg flex"
+const defaultStyles = "rounded-lg flex items-center"
 
 
 export const Button = (props : ButtonProps) => {
   return (
     <button className={`${variantStyle[props.variant]} ${sizeStyle[props.size]} ${defaultStyles}`} onClick={props.onClick} >
-      {props.startIcon && <span className="mr-2">{props.startIcon}</span>}
+     
+      {props.startIcon && <span className="mr-2">{props.startIcon}</span>} 
       {props.text}
       {props.endIcon && <span className="ml-2">{props.endIcon}</span>}
+      
+      
     </button>
   )
 }
