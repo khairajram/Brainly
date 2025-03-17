@@ -1,4 +1,3 @@
-
 import { ReactElement } from "react";
 
 export interface ButtonProps {
@@ -28,7 +27,7 @@ export const Button = (props : ButtonProps) => {
   return (
     <button className={`${variantStyle[props.variant]} ${sizeStyle[props.size]} ${defaultStyles}`} onClick={props.onClick} >
      
-      {props.startIcon && <span className="mr-2">{props.startIcon}</span>} 
+      {props.startIcon && <span className={`${props.text ? "mr-2" : "" }`}>{props.startIcon}</span>} 
       {props.text}
       {props.endIcon && <span className="ml-2">{props.endIcon}</span>}
       

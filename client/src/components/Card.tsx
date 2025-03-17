@@ -6,18 +6,18 @@ import { DeleteIcon } from "../icons/deleteIcon";
 export interface CardProps {
   mainIcon? : ReactElement;
   title : string;
-  shareIcon? : ReactElement;
-  deleteIcon? : ReactElement;
+  contentTypes? : "image" | "youtube-video" | "article" | "audio" | "twitt";
+  link : string;
   date? : Date
 }
 
 
 export function Card(props : CardProps){
   return <div className="bg-white rounded-md 
-  border-[#e6ebe9] border h-80 max-w-72">
+  border-[#e6ebe9] border  max-w-72 p-2 gap-2">
       <div>
         <div className="flex justify-between  gap-4 m-2">
-          <div className="flex items-center text-sm ">
+          <div className="flex items-center text-sm">
             {props.mainIcon &&  <div className="text-gray-500 pr-1 items-center">{props.mainIcon}</div>}
             <div>
               {props.title}
@@ -30,8 +30,21 @@ export function Card(props : CardProps){
               
           </div>
         </div>
+        
+        <div className="m-3">
+          {/* for youtube-video */}
+          {props.contentTypes === "youtube-video" && <iframe className="w-full h-40 shadow-sm ring-1 ring-gray-300 shadow-gray-200 " src={`http://www.youtube.com/embed/${props.link.split("?v=")[1]}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>}
+
+          
+{/* <iframe width="560" height="315" src="https://www.youtube.com/embed/c6yE_cVHN6U?si=NpDoP1zOWXDUFIti" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> */}
+
+          {/* for twitt */}
+
+          {props.contentTypes === "twitt" && <blockquote className="twitter-tweet">
+            <a href={props.link.replace("x.com","twitter.com")}></a> 
+          </blockquote> }
+
+        </div>
       </div>
-      
-      <div className="items-center flex justify-center">hii there</div>
   </div>
 }
