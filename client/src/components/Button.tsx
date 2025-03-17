@@ -4,7 +4,7 @@ import { ReactElement } from "react";
 export interface ButtonProps {
   variant : "primary" | "secondary";
   size : "sm" | "md" | "lg";
-  text : string;
+  text? : string;
   startIcon? : ReactElement;
   endIcon? : ReactElement;
   onClick : () => void
@@ -21,7 +21,7 @@ const sizeStyle = {
   "lg" : "py-4 px-6 text-lg",
 }
 
-const defaultStyles = "rounded-lg flex items-center"
+const defaultStyles = "rounded-lg flex items-center cursor-pointer justify-center"
 
 
 export const Button = (props : ButtonProps) => {
