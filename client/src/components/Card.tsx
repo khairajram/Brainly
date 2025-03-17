@@ -35,11 +35,7 @@ export function Card(props : CardProps){
           {/* for youtube-video */}
           {props.contentTypes === "youtube-video" && <iframe className="w-full h-40 shadow-sm ring-1 ring-gray-300 shadow-gray-200 " src={`http://www.youtube.com/embed/${props.link.split("?v=")[1]}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>}
 
-          
-{/* <iframe width="560" height="315" src="https://www.youtube.com/embed/c6yE_cVHN6U?si=NpDoP1zOWXDUFIti" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> */}
-
           {/* for twitt */}
-
           {props.contentTypes === "twitt" && <blockquote className="twitter-tweet">
             <a href={props.link.replace("x.com","twitter.com")}></a> 
           </blockquote> }
