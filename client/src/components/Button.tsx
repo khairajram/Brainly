@@ -4,8 +4,10 @@ export interface ButtonProps {
   variant : "primary" | "secondary";
   size : "sm" | "md" | "lg";
   text? : string;
+  text2? : string;
   startIcon? : ReactElement;
   endIcon? : ReactElement;
+  loading? : boolean
   onClick? : () => void
 }
 
@@ -25,10 +27,10 @@ const defaultStyles = "rounded-lg flex items-center cursor-pointer justify-cente
 
 export const Button = (props : ButtonProps) => {
   return (
-    <button className={`${variantStyle[props.variant]} ${sizeStyle[props.size]} ${defaultStyles}`} onClick={props.onClick} >
+    <button className={`${variantStyle[props.variant]} ${sizeStyle[props.size]} ${defaultStyles} ${props.loading ? "disabled cursor-not-allowed opacity-50" : ""}`} onClick={props.onClick} >
      
       {props.startIcon && <span className={`${props.text ? "mr-2" : "" }`}>{props.startIcon}</span>} 
-      {props.text}
+      {props.loading ? props.text2 : props.text}
       {props.endIcon && <span className="ml-2">{props.endIcon}</span>}
       
       

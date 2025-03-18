@@ -1,20 +1,53 @@
+// import { useEffect,useState } from "react"
 import { Dashboard } from "./pages/dashboard"
-import { BrowserRouter, Router, Routes, Route } from "react-router-dom"
-import { Signup } from "./pages/Signup"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { SignPage } from "./pages/signinup"
 import { Signin } from "./pages/Signin"
+import { Signup } from "./pages/Signup"
 
 
 function App() {
+  // const token = localStorage.getItem("token");
   
-
-  return <BrowserRouter>
-    <Routes>
-      <Route path="/signup" element={<Signup/>}/>
-      <Route path="/signup" element={<Signin/>}/>
-      <Route path="/dashboard" element={<Dashboard/>}/>
-    </Routes>
-  </BrowserRouter>
+  // useEffect(() => {
+  //   const fetchTodos = async () => {
       
+  //     try {
+  //       const response = await axios.get("http://localhost:3000/todos", {
+  //         headers: {
+  //           token: token
+  //         },
+  //       });
+  //       setTodos(response.data.todos);
+  //     } catch (error) {
+  //       console.error("Error fetching todos:", error);
+  //     }
+  //   };
+  //   if(isSignIn)
+  //     fetchTodos();
+  // }, []);
+
+  return (
+
+    <BrowserRouter>
+      <Routes>
+        <Route path="/signup" element={<Signup />} />
+      </Routes>
+    </BrowserRouter>
+  
+    // <SignPage initialPage={"signup"} />
+    
+
+
+  // <BrowserRouter>
+  //   <Routes>
+  //     <Route path="/signup" element={<SignPage initialPage={"signup"} />}/>
+  //     <Route path="/signup" element={<SignPage  initialPage={"signin"}/>}/>
+  //     <Route path="/dashboard" element={<Dashboard/>}/>
+  //   </Routes>
+  // </BrowserRouter>
+   
+  )   
       
 }
 
