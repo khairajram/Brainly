@@ -2,8 +2,6 @@
 import { Dashboard } from "./pages/dashboard"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { SignPage } from "./pages/signinup"
-import { Signin } from "./pages/Signin"
-import { Signup } from "./pages/Signup"
 
 
 function App() {
