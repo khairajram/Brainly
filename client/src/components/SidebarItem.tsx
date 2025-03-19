@@ -6,11 +6,17 @@ export interface SidebarItemProps {
   onClick? : () => void
 }
 
+const defaultStyle : string = "flex gap-5  m-2 items-center text-2xl hover:bg-red-200 cursor-pointer rounded-2xl p-2 ease-in-out transition-all duration-150 items-center";
 
+const iconStyle: Record<string, string> = {
+  home: "text-gray-500 group-hover:text-blue-600 ease-in-out transition-all duration-150",
+  youTube: "text-gray-500 group-hover:text-red-700 ease-in-out transition-all duration-150",
+  twitter: "text-gray-500 group-hover:text-blue-600 ease-in-out transition-all ",
+};
 
 export function SidebarItem(props : SidebarItemProps){
-  return <div className="flex gap-5  m-2 items-center text-2xl">
-    <div>
+  return <div className={`${defaultStyle} group`} >
+    <div className={`${iconStyle[props.title]}`}>
       {props.icon}
     </div>
     <div>

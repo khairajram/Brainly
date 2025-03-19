@@ -27,27 +27,15 @@ function App() {
   //     fetchTodos();
   // }, []);
 
-  return (
-
-    <BrowserRouter>
-      <Routes>
-        <Route path="/signup" element={<Signup />} />
-      </Routes>
-    </BrowserRouter>
-  
-    // <SignPage initialPage={"signup"} />
-    
-
-
-  // <BrowserRouter>
-  //   <Routes>
-  //     <Route path="/signup" element={<SignPage initialPage={"signup"} />}/>
-  //     <Route path="/signup" element={<SignPage  initialPage={"signin"}/>}/>
-  //     <Route path="/dashboard" element={<Dashboard/>}/>
-  //   </Routes>
-  // </BrowserRouter>
+  return <BrowserRouter>
+    <Routes>
+      <Route path="/signup" element={<SignPage initialPage={"signup"} />}/>
+      <Route path="/signup" element={<SignPage  initialPage={"signin"}/>}/>
+      <Route path="/dashboard" element={<Dashboard/>}/>
+    </Routes>
+  </BrowserRouter>
    
-  )   
+  
       
 }
 
