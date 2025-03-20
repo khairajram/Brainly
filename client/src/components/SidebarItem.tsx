@@ -14,6 +14,8 @@ const iconStyle: Record<string, string> = {
   Twitter: "text-gray-500 group-hover:text-blue-600 ease-in-out transition-all ",
   Documents: "text-gray-500 group-hover:text-blue-600 ease-in-out transition-all ",
   About: "text-gray-500 group-hover:text-blue-600 ease-in-out transition-all ",
+  Bookmark: "text-gray-500 group-hover:text-blue-600 ease-in-out transition-all ",
+  Dashboard: " text-gray-500 group-hover:text-blue-600 ease-in-out transition-all ",
 };
 
 export function SidebarItem(props : SidebarItemProps){

@@ -15,7 +15,7 @@ export function Dashboard(){
   return (
     <div className="flex">
       <Sidebar/>
-      <div className="flex-1 p-4 sm:ml-64 bg-[#f9fbfc]  min-h-screen ease-in-out transition-all duration-75">
+      <div className="flex-1 p-4 sm:ml-56 bg-[#f9fbfc]  min-h-screen ease-in-out transition-all duration-700">
         <CreateContentModel open={open} onClose={() => {
           setOpen(false)
         }}/>
