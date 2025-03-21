@@ -1,6 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
 import { BACKEND_URL } from "../confib";
+import { Button } from "../components/Button";
+import { InputElement } from "../components/InputElement";
 
 
 
@@ -24,19 +26,14 @@ export function Signin(){
     };
 
     return <>
-      <div style={{
-        display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center",
-        gap:"20px"
-      }}>
-        <div>
-          <input onChange={(e) => setEmail(e.target.value)} type="text" placeholder="Email" style={{height:"48px",width:"330px",borderRadius:"7px",paddingLeft:"10px",fontSize:"15px"}} id='email' />
+       <section className="h-screen flex justify-center items-center p-6 gap-2">
+      <div className="text-center flex flex-col gap-5">
+            <InputElement size="lg" placeholder="Email"/>
+            <InputElement size="lg" placeholder="password"/>
+            <Button variant="primary" size="md" text="SIGN IN" onClick={() => {}} />
         </div>
-        <div>
-          <input onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Password" style={{height:"48px",width:"330px",borderRadius:"7px",paddingLeft:"10px",fontSize:"15px"}} id='password' />
-        </div>
-        <div>
-          <button onClick={handleSignIn} style={{height:"48px",width:"330px",borderRadius:"7px",border:"0px",paddingLeft:"10px",fontSize:"15px",backgroundColor:"#0866ff",color:"rgb(255, 255, 255)", font:"20px",cursor:"pointer"}}>Log in</button>
-        </div>
-      </div>
+      </section>
     </>
 }
+
+

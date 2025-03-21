@@ -1,4 +1,4 @@
-// import { useEffect,useState } from "react"
+import { useState } from "react"
 import { Dashboard } from "./pages/dashboard"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { SignPage } from "./pages/signinup"
@@ -6,7 +6,11 @@ import { Header } from "./components/Header"
 
 
 function App() {
-  // const token = localStorage.getItem("token");
+  
+  const [open,setOpen] = useState(false);
+  const token = localStorage.getItem("token");
+  const [logedIn,setLogin] = useState(!!token);
+
   
   // useEffect(() => {
   //   const fetchTodos = async () => {
@@ -27,11 +31,11 @@ function App() {
   // }, []);
 
   return <BrowserRouter>
-    <Header/>
+    <Header logedIn={logedIn} open={open} setOpen={setOpen}/>
     <Routes>
-      <Route path="/signup" element={<SignPage initialPage={"signup"} />}/>
-      <Route path="/signup" element={<SignPage  initialPage={"signin"}/>}/>
-      <Route path="/dashboard" element={<Dashboard/>}/>
+      <Route path="/signup" element={<SignPage/>}/>
+      <Route path="/signin" element={<SignPage/>}/>
+      <Route path="/dashboard" element={<Dashboard open={open} setOpen={setOpen}/>}/>
     </Routes>
   </BrowserRouter>
    

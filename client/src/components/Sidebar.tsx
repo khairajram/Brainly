@@ -1,6 +1,5 @@
 import { AboutIcon } from "../icons/AboutIcon";
 import { BookmarkIcon } from "../icons/bookmarkIcon";
-import { DashboardIcon } from "../icons/Dashboard";
 import { DocumentIcon } from "../icons/documentIcon";
 import { GithubIcon } from "../icons/gitHub";
 import { HomeIcon } from "../icons/HomeIcon";
@@ -22,7 +21,7 @@ export function Sidebar(){
         <SidebarItem icon={<BookmarkIcon/>} title="Bookmark"/>
         <SidebarItem icon={<AboutIcon/>} title="About"/>
       </div>
-      <div className="left-20 bottom-10 fixed flex justify-center">
+      <div className="left-20 top-100 static flex justify-center">
         <div className="flex justify-center  items-center gap-2" >
           <div>
             <GithubIcon/>
