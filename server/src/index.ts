@@ -6,6 +6,7 @@ import jwt from "jsonwebtoken";
 import mongoose from "mongoose";
 import bcrypt from "bcrypt";
 import { auth } from "./middleware/auth.js";
+import cors from "cors";
 
 import { Tag,Content,User,Link } from "./db.js"
 
@@ -25,7 +26,12 @@ mongoose.connect(process.env.MONGO_URI as string)
 
 const app = express();
 
+app.use(cors());
+
+app.options("*", cors()); 
+
 app.use(express.json());
+
 
 interface signupType {
   "username": string,
@@ -218,4 +224,5 @@ app.post("/api/v1/content",auth,async (req : AuthenticatedRequest,res : Response
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
+  console.log(`CORS is configured to allow requests from http://localhost:5173`);
 });
