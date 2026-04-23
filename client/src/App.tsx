@@ -1,46 +1,69 @@
-import { useState } from "react"
-import { Dashboard } from "./pages/dashboard"
-import { BrowserRouter, Routes, Route } from "react-router-dom"
-import { SignPage } from "./pages/signinup"
-import { Header } from "./components/Header"
-
+import { useCallback, useState } from "react";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { Dashboard } from "./pages/dashboard";
+import { SignPage } from "./pages/signinup";
+import { SharedBrain } from "./pages/SharedBrain";
+import { Header } from "./components/Header";
 
 function App() {
-  
-  const [open,setOpen] = useState(false);
-  const token = localStorage.getItem("token");
-  const [logedIn,setLogin] = useState(!!token);
+  const [open, setOpen] = useState(false);
+  const [token, setToken] = useState<string | null>(() => localStorage.getItem("token"));
 
-  
-  // useEffect(() => {
-  //   const fetchTodos = async () => {
-      
-  //     try {
-  //       const response = await axios.get("http://localhost:3000/todos", {
-  //         headers: {
-  //           token: token
-  //         },
-  //       });
-  //       setTodos(response.data.todos);
-  //     } catch (error) {
-  //       console.error("Error fetching todos:", error);
-  //     }
-  //   };
-  //   if(isSignIn)
-  //     fetchTodos();
-  // }, []);
+  const handleAuth = useCallback((nextToken: string) => {
+    localStorage.setItem("token", nextToken);
+    setToken(nextToken);
+  }, []);
 
-  return <BrowserRouter>
-    <Header logedIn={logedIn} open={open} setOpen={setOpen}/>
-    <Routes>
-      <Route path="/signup" element={<SignPage/>}/>
-      <Route path="/signin" element={<SignPage/>}/>
-      <Route path="/dashboard" element={<Dashboard open={open} setOpen={setOpen}/>}/>
-    </Routes>
-  </BrowserRouter>
-   
-  
-      
+  const handleLogout = useCallback(() => {
+    localStorage.removeItem("token");
+    setToken(null);
+  }, []);
+
+  const loggedIn = !!token;
+
+  return (
+    <BrowserRouter>
+      <Header logedIn={loggedIn} open={open} setOpen={setOpen} onLogout={handleLogout} />
+      <Routes>
+        <Route
+          path="/"
+          element={<Navigate to={loggedIn ? "/dashboard" : "/signin"} replace />}
+        />
+        <Route
+          path="/signup"
+          element={
+            loggedIn ? (
+              <Navigate to="/dashboard" replace />
+            ) : (
+              <SignPage key="signup" initialMode="signup" onAuth={handleAuth} />
+            )
+          }
+        />
+        <Route
+          path="/signin"
+          element={
+            loggedIn ? (
+              <Navigate to="/dashboard" replace />
+            ) : (
+              <SignPage key="signin" initialMode="signin" onAuth={handleAuth} />
+            )
+          }
+        />
+        <Route
+          path="/dashboard"
+          element={
+            loggedIn ? (
+              <Dashboard open={open} setOpen={setOpen} />
+            ) : (
+              <Navigate to="/signin" replace />
+            )
+          }
+        />
+        <Route path="/brain/:hash" element={<SharedBrain />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
