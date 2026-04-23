@@ -1,6 +1,5 @@
 import jwt from "jsonwebtoken";
-import { Request, Response, NextFunction  } from "express";
-import { string } from "zod";
+import { Request, Response, NextFunction } from "express";
 
 const JWT_SECRET = process.env.JWT_SECRET;
 
@@ -8,23 +7,27 @@ if (!JWT_SECRET) {
   throw new Error("JWT_SECRET is not defined in environment variables");
 }
 
-interface AuthenticatedRequest extends Request {
+export interface AuthenticatedRequest extends Request {
   _id?: string;
 }
 
-export  function auth(req : AuthenticatedRequest,res : Response,next : NextFunction){
+export function auth(req: AuthenticatedRequest, res: Response, next: NextFunction) {
   try {
-    const token : string | undefined  = req.headers.authorization;
-    if (!token) {
+    const header = req.headers.authorization;
+    if (!header) {
       res.status(401).json({ message: "Unauthorized: No token provided" });
+      return;
     }
 
-    const decoded = jwt.verify(token as string, JWT_SECRET as string);
+    const token = header.startsWith("Bearer ") ? header.slice("Bearer ".length) : header;
+
+    const decoded = jwt.verify(token, JWT_SECRET as string);
 
     req._id = (decoded as jwt.JwtPayload)._id;
-    
+
     next();
   } catch (error) {
     res.status(403).json({ message: "Unauthorized: Invalid token" });
+    return;
   }
 }
